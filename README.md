@@ -27,22 +27,29 @@ drf-spectacular
 
 ⚙️ Instalação e Configuração
 1. Clone o repositório
+
+
 git clone <URL_DO_REPOSITORIO>
 cd JobConnect
 
 2. Crie o ambiente virtual
+
+
 python -m venv venv
 venv\Scripts\activate   # Windows
 source venv/bin/activate   # Linux/Mac
 
 3. Instale as dependências
+
 pip install -r requirements.txt
 
 4. Configure o banco de dados no settings.py
 
 
 5. Execute as migrações
+
 python manage.py migrate
 
 6. Rode o servidor
+
 python manage.py runserver
