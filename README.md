@@ -40,18 +40,6 @@ pip install -r requirements.txt
 
 4. Configure o banco de dados no settings.py
 
-Exemplo com PostgreSQL:
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jobconnect',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 
 5. Execute as migrações
 python manage.py migrate
