@@ -53,6 +53,12 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
+from decouple import config
+
+SECRET_KEY = config("SECRET_KEY")
+DEBUG = config("DEBUG", default=True, cast=bool)
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,10 +95,15 @@ WSGI_APPLICATION = 'JobConnect.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'jobconnect',
+        'USER': 'postgres',
+        'PASSWORD': 'dudu1234',
+        'HOST': 'localhost',
+        'PORT': '2468',
     }
 }
+
 
 
 # Password validation
