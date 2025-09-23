@@ -1,49 +1,60 @@
-JobConnect
-API para um sistema de vagas de emprego, permitindo o cadastro de currículos, empresas e o match entre candidatos e vagas.
+🚀 JobConnect
 
-#Funcionalidades
+API para um sistema de vagas de emprego, permitindo o cadastro de empresas, candidatos e vagas, além de um sistema de match inteligente entre candidatos e oportunidades.
 
-Cadastro e gerenciamento de empresas,
-Cadastro e gerenciamento de vagas de emprego,
-Cadastro e gerenciamento de candidatos e currículos,
-Sistema de match entre candidatos e vagas,
-API RESTful com endpoints para CRUD completo.
+📌 Funcionalidades
 
-#Tecnologias Utilizadas
+✅ Cadastro e gerenciamento de empresas
+✅ Cadastro e gerenciamento de candidatos
+✅ Cadastro e gerenciamento de vagas
+✅ Sistema de match entre candidatos e vagas
+✅ API RESTful documentada com Swagger / Redoc
 
-Django,
-Django REST Framework,
-Banco de dados (ex.: PostgreSQL ou MySQL),
-Bibliotecas auxiliares (ex.: djangorestframework_simplejwt para autenticação JWT, drf-spectacular para documentação da API).
+🛠️ Tecnologias Utilizadas
 
-Instalação
+Python 3.10+
 
-Clone o repositório:
+Django
 
+Django REST Framework
+
+PostgreSQL
+
+JWT Authentication
+
+drf-spectacular
+ para documentação da API
+
+⚙️ Instalação e Configuração
+1. Clone o repositório
 git clone <URL_DO_REPOSITORIO>
 cd JobConnect
 
-
-Crie um ambiente virtual e ative:
-
+2. Crie o ambiente virtual
 python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
+venv\Scripts\activate   # Windows
+source venv/bin/activate   # Linux/Mac
 
-
-Instale as dependências:
-
+3. Instale as dependências
 pip install -r requirements.txt
 
+4. Configure o banco de dados no settings.py
 
-Configure o banco de dados no arquivo settings.py.
+Exemplo com PostgreSQL:
 
-Execute as migrations:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'jobconnect',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
+5. Execute as migrações
 python manage.py migrate
 
-Execução
-
-Para iniciar o servidor de desenvolvimento:
-
+6. Rode o servidor
 python manage.py runserver
