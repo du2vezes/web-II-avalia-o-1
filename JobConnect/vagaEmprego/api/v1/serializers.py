@@ -4,14 +4,14 @@ from vagaEmprego import models
 class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Empresa
-        fields = "__all__"
+        fields = ['id', 'nome', 'descricao', 'area_atuacao']
 
 class VagaSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Vaga
-        fields = "__all__"
+        fields = ['id', 'empresa', 'titulo', 'descricao', 'requisitos']
 
 class CandidatoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Candidato
-        fields = "__all__"
+        fields = ['id','nome', 'email', 'curriculo']
