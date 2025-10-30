@@ -18,6 +18,8 @@ class Vaga(BaseModel):
     titulo = models.CharField(max_length=200)
     descricao = models.TextField()
     requisitos = models.TextField()
+    salario = models.DecimalField(max_digits=10, decimal_places=2)
+    
 
 class Candidato(BaseModel):
     nome = models.CharField(max_length=200)
