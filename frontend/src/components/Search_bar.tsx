@@ -1,7 +1,8 @@
+// components/Bar.tsx
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../lib/store";
+import type { RootState } from "lib/store/index";
 import { logout } from "../lib/store/slices/AuthSlice";
 
 export function Bar() {
@@ -11,21 +12,19 @@ export function Bar() {
 
     const [menuOpen, setMenuOpen] = useState(false);
 
-    
     const handleLogout = () => {
         dispatch(logout());
-        localStorage.removeItem("token"); // Remove o token salvo no navegador
-        setMenuOpen(false); // Fecha o menu
-        navigate("/login"); // Redireciona pra tela de login
+        setMenuOpen(false);
+        navigate("/login");
     };
 
     return (
-        <header className="fixed top-0 left-0 right-0 h-20 flex items-center justify-between px-4 sm:px-6 md:px-8 bg-[rgba(70,59,175,0.205)] shadow-md]">
-        
+        <header className="fixed top-0 left-0 right-0 h-20 flex items-center justify-between px-4 sm:px-6 md:px-8 bg-[rgba(70,59,175,0.2)] shadow-md z-50">
         {/* Logo */}
         <Link to="/">
             <img
-            alt="logo"
+            src="/logo.png" // coloque o caminho da sua logo
+            alt="Logo"
             className="w-16 sm:w-20 md:w-28 lg:w-36 xl:w-44 transition-transform duration-300 hover:scale-105"
             />
         </Link>
@@ -53,12 +52,14 @@ export function Bar() {
             </div>
         </div>
 
-        {/* Avatar + menu dropdown */}
+        {/* Avatar + Dropdown */}
         <div className="relative">
             <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="rounded-full overflow-hidden w-12 h-12 bg-gray-700"
-            ></button>
+            >
+            {/* Avatar poderia ser img aqui */}
+            </button>
 
             {/* Dropdown */}
             <div
@@ -66,7 +67,6 @@ export function Bar() {
                 menuOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
             }`}
             >
-            {/* Opções do menu */}
             {!isAuthenticated ? (
                 <Link
                 to="/login"
