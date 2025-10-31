@@ -1,8 +1,9 @@
-import "@/styles/Login.css";
-import { api } from "lib/api";
+
+import  {api}  from "../lib/api";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import { AxiosError } from "axios";
+
 
 function Login() {  
     const [username, setUsername] = useState("");
@@ -38,48 +39,56 @@ function Login() {
     };
 
     return (
-        <div className="background">
-        <div className="login-container"> 
-            <h2>Login</h2>
+    <div className="min-h-screen flex items-center justify-center bg-black">
+        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 w-80 text-center shadow-lg text-white font-poppins">
+        <h2 className="text-2xl font-semibold mb-6 tracking-wide">Login</h2>
 
-            {/* 🔹 Conecta o formulário com a função */}
-            <form onSubmit={handleLogin}>
-            <div className="input-box">
-                <input
+        <form onSubmit={handleLogin} className="space-y-6">
+            <div className="relative">
+            <input
                 type="text"
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-                />
+                className="w-full px-4 py-3 rounded-full bg-white/15 text-white placeholder-gray-300 text-sm outline-none focus:bg-white/25 focus:ring-2 focus:ring-white/30 transition-all"
+            />
             </div>
 
-            <div className="input-box">
-                <input
+            <div className="relative">
+            <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                />
+                className="w-full px-4 py-3 rounded-full bg-white/15 text-white placeholder-gray-300 text-sm outline-none focus:bg-white/25 focus:ring-2 focus:ring-white/30 transition-all"
+            />
             </div>
 
-            <div className="options">
-                <label>
-                <input type="checkbox" /> Remember me
-                </label>
-                <a href="#">Forgot password?</a>
+            <div className="flex justify-between items-center text-xs text-gray-300">
+            <label className="flex items-center space-x-1">
+                <input type="checkbox" className="accent-white" />
+                <span>Remember me</span>
+            </label>
+            <a href="#" className="hover:text-white underline">Forgot password?</a>
             </div>
 
-            <button type="submit" className="login-btn">Login</button>
+            <button
+            type="submit"
+            className="w-full py-3 rounded-full bg-white text-gray-800 font-bold hover:bg-gray-100 hover:scale-105 transition-all"
+            >
+            Login
+            </button>
 
-            <p className="register-text">
-                Don’t have an account? <a href="#">Register</a>
+            <p className="text-gray-300 text-sm mt-4">
+            Don’t have an account? <Link to="/registrar" className="text-white underline">Register</Link>
             </p>
-            </form>
+        </form>
         </div>
-        </div>
+    </div>
     );
+
 }
 
 export default Login;
