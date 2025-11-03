@@ -1,29 +1,19 @@
-// components/Bar.tsx
+
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "lib/store/index";
-import { logout } from "../lib/store/slices/AuthSlice";
+import { Link} from "react-router-dom";
+
+import DropdownMenuCustom from "../components/dropdown";
 
 export function Bar() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const handleLogout = () => {
-        dispatch(logout());
-        setMenuOpen(false);
-        navigate("/login");
-    };
 
     return (
+    
         <header className="fixed top-0 left-0 right-0 h-20 flex items-center justify-between px-4 sm:px-6 md:px-8 bg-[rgba(70,59,175,0.2)] shadow-md z-50">
         {/* Logo */}
         <Link to="/">
             <img
-            src="/logo.png" // coloque o caminho da sua logo
+            src="/logo.png" 
             alt="Logo"
             className="w-16 sm:w-20 md:w-28 lg:w-36 xl:w-44 transition-transform duration-300 hover:scale-105"
             />
@@ -54,52 +44,7 @@ export function Bar() {
 
         {/* Avatar + Dropdown */}
         <div className="relative">
-            <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="rounded-full overflow-hidden w-12 h-12 bg-gray-700"
-            >
-            {/* Avatar poderia ser img aqui */}
-            </button>
-
-            {/* Dropdown */}
-            <div
-            className={`absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg overflow-hidden transition-all duration-300 ${
-                menuOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
-            }`}
-            >
-            {!isAuthenticated ? (
-                <Link
-                to="/login"
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                onClick={() => setMenuOpen(false)}
-                >
-                Login
-                </Link>
-            ) : (
-                <>
-                <Link
-                    to="/profile"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                    onClick={() => setMenuOpen(false)}
-                >
-                    Perfil
-                </Link>
-                <Link
-                    to="/settings"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                    onClick={() => setMenuOpen(false)}
-                >
-                    Configurações
-                </Link>
-                <button
-                    onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-100 border-t border-gray-200"
-                >
-                    Sair
-                </button>
-                </>
-            )}
-            </div>
+            <DropdownMenuCustom />
         </div>
         </header>
     );
