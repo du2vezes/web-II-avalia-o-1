@@ -1,15 +1,26 @@
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
-import { Button } from "@heroui/button";
-import {Avatar} from "@heroui/avatar";
-import foto from "../assets/znt.jpg";
+import { useNavigate } from "react-router-dom";
+import { logout } from "lib/store/slices/AuthSlice";
+import { useDispatch } from "react-redux";
+
+
+
 
 function DropdownMenuCustom() {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch(logout());
+        
+        navigate("/login");
+    };
+    
     return (
         <Dropdown placement="bottom-end">
             <DropdownTrigger>
-                <Button isIconOnly className="rounded-full">
-                    <Avatar src={foto} alt="User " className= "w-10 h-10 rounded-full "/>
-                </Button>
+                <div className="text-white hover:text-yellow-300 transition-colors">Login</div>
             </DropdownTrigger>
 
             <DropdownMenu
@@ -31,7 +42,7 @@ function DropdownMenuCustom() {
                 <DropdownItem key="perfil">Perfil</DropdownItem>
                 <DropdownItem key="config">Configurações</DropdownItem>
                 <DropdownItem key="suporte">Ajuda / Suporte</DropdownItem>
-                <DropdownItem key="logout" color="danger" className="text-red-600 font-semibold">
+                <DropdownItem key="logout" color="danger" className="text-red-600 font-semibold"  onClick={handleLogout} >
                     Sair
                 </DropdownItem>
             </DropdownMenu>

@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface AuthState {
+interface authState {
     isAuthenticated: boolean;
     token: string | null;
 }
@@ -8,7 +8,7 @@ interface AuthState {
 // tenta recuperar o token salvo
 const tokenFromStorage = localStorage.getItem("token");
 
-const initialState: AuthState = {
+const initialState: authState = {
     isAuthenticated: !!tokenFromStorage,
     token: tokenFromStorage,
     };
@@ -20,13 +20,14 @@ const initialState: AuthState = {
         login: (state, action: PayloadAction<string>) => {
         state.isAuthenticated = true;
         state.token = action.payload;
-        localStorage.setItem("token", action.payload);
+        localStorage.setItem("access_token", action.payload);
         console.log("✅ Login salvo no Redux:", action.payload);
         },
         logout: (state) => {
         state.isAuthenticated = false;
         state.token = null;
-        localStorage.removeItem("token");
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refreshToken");
         console.log("🚪 Logout executado");
         },
     },

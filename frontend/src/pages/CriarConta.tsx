@@ -15,7 +15,6 @@ export function CriarConta() {
         <div className="flex flex-col items-center justify-center min-h-screen w-full bg-[#0D1117] px-4">
 
             <img 
-    
             alt="logo" 
             className="w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64 mb-5 transition-transform duration-300 hover:scale-105"
             />

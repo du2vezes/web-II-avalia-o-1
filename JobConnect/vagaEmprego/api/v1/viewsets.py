@@ -17,3 +17,4 @@ class CandidatoViewSet(viewsets.ModelViewSet):
     queryset = models.Candidato.objects.filter(is_deleted=False)
     serializer_class = serializers.CandidatoSerializer
     permission_classes = [IsAuthenticated]  
+

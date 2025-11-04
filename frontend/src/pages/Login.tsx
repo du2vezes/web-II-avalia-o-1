@@ -27,7 +27,7 @@ function Login() {
         localStorage.setItem("refresh_token", refresh);
 
         alert("Login feito com sucesso!");
-        navigate("/projeto");
+        navigate("/home");
         
         } catch (error: unknown) {
         const err = error as AxiosError<unknown>;
