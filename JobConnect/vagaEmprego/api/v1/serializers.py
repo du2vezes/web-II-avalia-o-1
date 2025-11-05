@@ -9,7 +9,7 @@ class EmpresaSerializer(serializers.ModelSerializer):
 class VagaSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Vaga
-        fields = ['id', 'empresa', 'titulo', 'descricao', 'requisitos']
+        fields = ['id', 'empresa', 'titulo', 'descricao', 'requisitos','salario']
 
 class CandidatoSerializer(serializers.ModelSerializer):
     class Meta:
