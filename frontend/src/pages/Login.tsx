@@ -5,6 +5,7 @@ import { Link, useNavigate, } from "react-router-dom";
 import { AxiosError } from "axios";
 
 
+
 function Login() {  
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -27,7 +28,7 @@ function Login() {
         localStorage.setItem("refresh_token", refresh);
 
         alert("Login feito com sucesso!");
-        navigate("/home");
+        navigate("/");
         
         } catch (error: unknown) {
         const err = error as AxiosError<unknown>;

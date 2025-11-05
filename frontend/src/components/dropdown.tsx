@@ -1,19 +1,17 @@
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
 import { useNavigate } from "react-router-dom";
-import { logout } from "lib/store/slices/AuthSlice";
-import { useDispatch } from "react-redux";
+
+
 
 
 
 
 function DropdownMenuCustom() {
-
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-
+    
     const handleLogout = () => {
-        dispatch(logout());
-        
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
         navigate("/login");
     };
     
@@ -39,9 +37,9 @@ function DropdownMenuCustom() {
                     ],
                 }}
             >
-                <DropdownItem key="perfil">Perfil</DropdownItem>
-                <DropdownItem key="config">Configurações</DropdownItem>
-                <DropdownItem key="suporte">Ajuda / Suporte</DropdownItem>
+                <DropdownItem key="perfil" onClick={() => navigate("login")}>Entrar</DropdownItem>
+
+                
                 <DropdownItem key="logout" color="danger" className="text-red-600 font-semibold"  onClick={handleLogout} >
                     Sair
                 </DropdownItem>
