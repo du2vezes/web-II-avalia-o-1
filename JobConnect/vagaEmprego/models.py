@@ -30,5 +30,7 @@ class Candidato(BaseModel):
     curriculo = models.TextField()
     
 
+class Perfil(BaseModel):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
 
     
