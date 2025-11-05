@@ -1,42 +1,40 @@
-
-import  {api}  from "../api/api";
+import { api } from "../api/api";
 import { useState } from "react";
-import { Link, useNavigate, } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
+import { useAuthStore } from "../store/authStore";
 
-
-
-function Login() {  
+export function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    
+
+    const login = useAuthStore((state) => state.login);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!username || !password) {
-        alert("Preencha todos os campos!");
-        return;
+            alert("Preencha todos os campos!");
+            return;
         }
 
         try {
-        const response = await api.post("token/", { username, password });
+            const response = await api.post("token/", { username, password });
+            const { access, refresh } = response.data;
 
-        const { access, refresh } = response.data;
-        localStorage.setItem("access_token", access);
-        localStorage.setItem("refresh_token", refresh);
+            login(access, refresh);
 
-        alert("Login feito com sucesso!");
-        navigate("/");
-        
+            alert("Login feito com sucesso!");
+            navigate("/");
+
         } catch (error: unknown) {
-        const err = error as AxiosError<unknown>;
-        if (err.response) {
-            alert(err)
-        } else {
-            alert("Erro de rede. Tente novamente.");
-        }
+            const err = error as AxiosError;
+            if (err.response) {
+                alert(`Erro: ${JSON.stringify(err.response.data)}`);
+            } else {
+                alert("Erro de rede. Tente novamente.");
+            }
         }
     };
 
