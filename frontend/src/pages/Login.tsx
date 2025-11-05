@@ -1,16 +1,15 @@
-
-import  {api}  from "../lib/api";
+import { api } from "../api/api";
 import { useState } from "react";
-import { Link, useNavigate, } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
+import { useAuthStore } from "../store/authStore";
 
-
-
-function Login() {  
+export function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    
+
+    const login = useAuthStore((state) => state.login);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -22,18 +21,18 @@ function Login() {
 
         try {
         const response = await api.post("token/", { username, password });
-
         const { access, refresh } = response.data;
-        localStorage.setItem("access_token", access);
-        localStorage.setItem("refresh_token", refresh);
+
+
+        login(access, refresh);
 
         alert("Login feito com sucesso!");
         navigate("/");
-        
+
         } catch (error: unknown) {
-        const err = error as AxiosError<unknown>;
+        const err = error as AxiosError;
         if (err.response) {
-            alert(err)
+            alert(`Erro: ${JSON.stringify(err.response.data)}`);
         } else {
             alert("Erro de rede. Tente novamente.");
         }

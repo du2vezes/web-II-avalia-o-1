@@ -1,6 +1,6 @@
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
 import { useNavigate } from "react-router-dom";
-
+import { useAuthStore } from "../store/authStore";
 
 
 
@@ -8,10 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 function DropdownMenuCustom() {
     const navigate = useNavigate();
+    const logout = useAuthStore((state) => state.logout);
+    
     
     const handleLogout = () => {
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("refresh_token");
+        logout();
         navigate("/login");
     };
     
