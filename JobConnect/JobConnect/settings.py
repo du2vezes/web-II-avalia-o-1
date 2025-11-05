@@ -91,7 +91,7 @@ from decouple import config
 
 DATABASES = {
     'default': {
-        'ENGINE': config('ENGINE', default='django.db.backends.mysql'),
+        'ENGINE': config('ENGINE', default='django.db.backends.postgresql'),
         'NAME': config('NAME'),
         'USER': config('USER'),
         'PASSWORD': config('PASSWORD'),
