@@ -4,10 +4,9 @@ import axios from "axios";
 
 export const api = axios.create({
     baseURL: "http://127.0.0.1:8000/api/",
-    withCredentials: true, // se usar cookies
+
 });
 
-// 🔹 Adiciona o token de acesso em todas as requisições
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem("access_token");
     if (token) {
