@@ -29,13 +29,18 @@ export function EmpresaCadastro() {
 
             alert("Empresa cadastrada com sucesso! Faça login para continuar.");
             navigate("/login");
-        }  catch (error: unknown) {
-        const err = error as AxiosError;
-        if (err.response) {
-            alert(`Erro: ${JSON.stringify(err.response.data)}`);
-        } else {
-            alert("Erro de rede. Tente novamente.");
-        }
+        }  catch (error: any) {
+            console.error("Erro ao cadastrar empresa:", error.response?.data || error.message);
+            
+            if (error.response?.status === 400) {
+                alert("Erro nos dados: " + JSON.stringify(error.response.data));
+            } else if (error.response?.status === 401) {
+                alert("Não autorizado. Verifique suas credenciais.");
+            } else if (error.response?.status === 404) {
+                alert("Endpoint não encontrado. Verifique a URL da API.");
+            } else {
+                alert("Erro ao cadastrar empresa: " + (error.response?.data?.message || error.message));
+            }
         }
     };
 
