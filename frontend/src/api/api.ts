@@ -15,6 +15,8 @@ api.interceptors.request.use((config) => {
     return config;
 });
 
+
+
 // 🔹 Intercepta respostas de erro
 api.interceptors.response.use(
     (response) => response,
@@ -51,3 +53,4 @@ api.interceptors.response.use(
         return Promise.reject(error);
     }
 );
+

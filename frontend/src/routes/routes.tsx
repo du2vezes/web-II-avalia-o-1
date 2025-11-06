@@ -11,14 +11,8 @@ export  function AppRoutes(){
         <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login />} />
-            <Route path="/empresaCasdastro" element={< EmpresaCadastro/>
-        
-            
-            } />
-            <Route path="/candidatoCasdastro" element={< CandidatoCadastro/>
-
-            
-            } />
+            <Route path="/empresaCasdastro" element={< EmpresaCadastro/>} />
+            <Route path="/candidatoCasdastro" element={< CandidatoCadastro/>} />
             <Route path="/vagascadastro" element={
                 <PrivateRoute>
                     < VagasCadastro/>

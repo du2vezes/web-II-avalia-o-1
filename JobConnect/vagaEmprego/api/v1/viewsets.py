@@ -14,10 +14,15 @@ class EmpresaViewSet(viewsets.ModelViewSet):
             permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]
 
+
 class VagaViewSet(viewsets.ModelViewSet):
     queryset = models.Vaga.objects.filter(is_deleted=False)
     serializer_class = serializers.VagaSerializer
     permission_classes = [IsAuthenticated]
+    ## um jeito de na tela de cadastro de vagas puxar o id da empresa automatico 
+    def perform_create(self, serializer):
+        empresa = self.request.user.Empresa
+        serializer.save(empresa=empresa)
 
 class CandidatoViewSet(viewsets.ModelViewSet):
     queryset = models.Candidato.objects.filter(is_deleted=False)

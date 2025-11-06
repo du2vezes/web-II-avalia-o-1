@@ -2,6 +2,7 @@ import { useState } from "react";
 import foto from "../assets/candidato.png";
 import { useNavigate, Link } from "react-router-dom";
 import { api } from "../api/api";
+import type { AxiosError } from "axios";
 
 export function CandidatoCadastro() {
     const [nome, setNome] = useState("");
@@ -25,19 +26,14 @@ export function CandidatoCadastro() {
             alert("Candidato cadastrado com sucesso! Faça login para continuar.");
             navigate("/login");
 
-        } catch (error: any) {
-            console.error("Erro ao cadastrar candidato:", error.response?.data || error.message);
-
-            if (error.response?.status === 400) {
-                alert("Erro nos dados: " + JSON.stringify(error.response.data));
-            } else if (error.response?.status === 401) {
-                alert("Não autorizado. Verifique suas credenciais.");
-            } else if (error.response?.status === 404) {
-                alert("Endpoint não encontrado. Verifique a URL da API.");
-            } else {
-                alert("Erro ao cadastrar candidato: " + (error.response?.data?.message || error.message));
-            }
-        }
+        } catch (error: unknown) {
+                const err = error as AxiosError;
+                if (err.response) {
+                    alert(`Erro: ${JSON.stringify(err.response.data)}`);
+                } else {
+                    alert("Erro de rede. Tente novamente.");
+                }
+                }
     };
 
     return (

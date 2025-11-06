@@ -12,7 +12,9 @@ export function Login() {
     const login = useAuthStore((state) => state.login);
 
     const handleLogin = async (e: React.FormEvent) => {
+    
         e.preventDefault();
+
 
         if (!username || !password) {
         alert("Preencha todos os campos!");
@@ -22,6 +24,7 @@ export function Login() {
         try {
         const response = await api.post("token/", { username, password });
         const { access, refresh,user}  = response.data;
+        // Determinar o tipo de usuário com base nos grupos retornados
         const tipo = user.groups.includes("Empresa") ? "Empresa" : "Candidato";
 
 
