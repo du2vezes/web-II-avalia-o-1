@@ -5,6 +5,11 @@ import PrivateRoute from "./PrivateRoute";
 import { EmpresaCadastro } from "../pages/EmpresaCadastro";
 import { CandidatoCadastro } from "../pages/CandidatoCadastro";
 import { VagasCadastro } from "../pages/VagasCadastro";
+import {VerVagas} from '../pages/VerVagas'
+import { VagasEditar } from "../pages/VagasEditar";
+
+
+
 
 export  function AppRoutes(){
     return(
@@ -12,13 +17,34 @@ export  function AppRoutes(){
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/empresaCasdastro" element={< EmpresaCadastro/>} />
-            <Route path="/candidatoCasdastro" element={< CandidatoCadastro/>} />
+            <Route path="/candidatoCadastro" element={< CandidatoCadastro/>} />
+            <Route path="/vervagas" element={<VerVagas/>}/>
+            
+
             <Route path="/vagascadastro" element={
                 <PrivateRoute>
                     < VagasCadastro/>
                 </PrivateRoute>
             
             } />
+
+            <Route
+                path="/editar/:id"
+                element={
+                    <PrivateRoute>
+                    <VagasEditar />
+                    </PrivateRoute>
+                }
+                />
+            <Route
+                path="/editar/:id"
+                element={
+                    <PrivateRoute>
+                    <VagasEditar />
+                    </PrivateRoute>
+                }
+                />
+
 
         </Routes>
 

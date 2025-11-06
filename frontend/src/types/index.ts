@@ -24,9 +24,10 @@ export interface Vaga {
     id: number;
     titulo: string;
     descricao: string;
-    empresa: number;
     requisitos: string;
     salario: number;
+    empresa: string;
+    empresa_nome?: string;
 }
 
 // Tipos relacionados a candidatos

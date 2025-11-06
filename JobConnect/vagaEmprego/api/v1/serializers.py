@@ -77,9 +77,10 @@ class CandidatoSerializer(serializers.ModelSerializer):
 
 
 class VagaSerializer(serializers.ModelSerializer):
+    empresa_nome = serializers.CharField(source="empresa.nome", read_only=True)
     class Meta:
         model = models.Vaga
-        fields = ['id','titulo', 'descricao', 'requisitos','salario']
+        fields = ['id','titulo', 'descricao', 'requisitos','salario','empresa_nome']
 
 
 class PerfilSerializer(serializers.ModelSerializer):
