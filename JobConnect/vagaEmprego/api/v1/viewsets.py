@@ -7,6 +7,12 @@ class EmpresaViewSet(viewsets.ModelViewSet):
     queryset = models.Empresa.objects.filter(is_deleted=False)
     serializer_class = serializers.EmpresaSerializer
     permission_classes = [IsAuthenticated]
+    def get_permissions(self):
+        if self.action == 'create':
+            permission_classes = [AllowAny]
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
 class VagaViewSet(viewsets.ModelViewSet):
     queryset = models.Vaga.objects.filter(is_deleted=False)
@@ -25,7 +31,6 @@ class PerfilViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'create':
-            # Qualquer pessoa pode criar
             permission_classes = [AllowAny]
         else:
             permission_classes = [IsAuthenticated]
