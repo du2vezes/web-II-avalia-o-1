@@ -1,15 +1,17 @@
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
 
 function DropdownMenuCustom() {
     const navigate = useNavigate();
-
+    const tipo = useAuthStore(state => state.tipo);
 
     return (
-
         <Dropdown placement="bottom-end">
             <DropdownTrigger>
-                <div className="text-white hover:text-yellow-300 transition-colors">Vagas</div>
+                <div className="text-white hover:text-yellow-300 transition-colors">
+                    Vagas
+                </div>
             </DropdownTrigger>
 
             <DropdownMenu
@@ -28,14 +30,21 @@ function DropdownMenuCustom() {
                     ],
                 }}
             >
-            
-                    <DropdownItem key="cadastro" onClick={() => navigate("vagascadastro")}>
-                        Cadastrar Vagas
-                    </DropdownItem>
-                    <DropdownItem key="Ver" onClick={() => navigate("")}>
+                {/* Menu da EMPRESA */}
+                {tipo === "Empresa" ? (
+                    <>
+                        <DropdownItem key="cadastrar-vagas" onClick={() => navigate("vagascadastro")}>
+                            Cadastrar Vagas
+                        </DropdownItem>
+                        <DropdownItem key="ver-vagas-empresa" onClick={() => navigate("vervagas")}>
+                            Ver Vagas
+                        </DropdownItem>
+                    </>
+                ) : (
+                    <DropdownItem key="ver-vagas" onClick={() => navigate("vervagas")}>
                         Ver Vagas
                     </DropdownItem>
-            
+                )}
             </DropdownMenu>
         </Dropdown>
     );

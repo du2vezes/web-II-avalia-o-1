@@ -21,9 +21,11 @@ export function Login() {
 
         try {
         const response = await api.post("token/", { username, password });
-        const { access, refresh } = response.data;
+        const { access, refresh,user}  = response.data;
+        const tipo = user.groups.includes("Empresa") ? "Empresa" : "Candidato";
 
-        login(access, refresh);
+
+        login(access, refresh,tipo);
 
         alert("Login feito com sucesso!");
         navigate("/");
