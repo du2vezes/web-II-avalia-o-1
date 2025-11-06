@@ -2,7 +2,7 @@ import foto from "../assets/empresacadastro.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../api/api";
-import { AxiosError } from "axios";
+import Bar from "../components/Search_bar";
 
 export function EmpresaCadastro() {
     const [nome, setNome] = useState("");
@@ -46,7 +46,7 @@ export function EmpresaCadastro() {
 
     return (
         <section id="signup-form" className="bg-white font-poppins">
-        <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+        <Bar/><div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
             {/* Form Panel */}
             <div className="flex flex-col justify-center items-center px-6 sm:px-12 py-16">
             <div className="w-full max-w-md">

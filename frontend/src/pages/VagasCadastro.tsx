@@ -3,6 +3,7 @@ import { api } from "../api/api";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AxiosError } from "axios";
+import Bar from "../components/Search_bar";
 
 
 
@@ -44,7 +45,7 @@ export function VagasCadastro() {
     
         return (
         <section id="section-form-page" className="bg-white font-poppins">
-        <div className="min-h-screen flex items-stretch">
+        <Bar/><div className="min-h-screen flex items-stretch">
             <div className="w-full grid grid-cols-1 lg:grid-cols-2">
 
             {/* Form Column */}

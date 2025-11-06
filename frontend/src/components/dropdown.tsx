@@ -13,7 +13,7 @@ function DropdownMenuCustom() {
     
     const handleLogout = () => {
         logout();
-        navigate("/login");
+        navigate("/");
     };
     
     return (
@@ -38,7 +38,7 @@ function DropdownMenuCustom() {
                     ],
                 }}
             >
-                <DropdownItem key="perfil" onClick={() => navigate("login")}>Entrar</DropdownItem>
+                <DropdownItem key="perfil" onClick={() => navigate("/login")}>Entrar</DropdownItem>
 
                 
                 <DropdownItem key="logout" color="danger" className="text-red-600 font-semibold"  onClick={handleLogout} >

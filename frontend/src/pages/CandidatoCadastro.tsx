@@ -3,6 +3,7 @@ import foto from "../assets/candidato.png";
 import { useNavigate, Link } from "react-router-dom";
 import { api } from "../api/api";
 import type { AxiosError } from "axios";
+import Bar from "../components/Search_bar";
 
 export function CandidatoCadastro() {
     const [nome, setNome] = useState("");
@@ -38,7 +39,7 @@ export function CandidatoCadastro() {
 
     return (
         <section id="section-signup-form" className="bg-white font-poppins">
-            <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+            <Bar/><div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
                 {/* Form Column */}
                 <div className="flex flex-col justify-center items-center p-8 sm:p-12">
                     <div className="w-full max-w-md">

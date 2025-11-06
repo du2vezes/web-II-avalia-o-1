@@ -47,7 +47,7 @@ export function VagasEditar() {
         });
 
         alert("Vaga atualizada com sucesso!");
-        navigate("/vagas");
+        navigate("/vervagas");
         } catch (error: unknown) {
         const err = error as AxiosError;
         if (err.response) {

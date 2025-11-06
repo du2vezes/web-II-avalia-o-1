@@ -33,15 +33,15 @@ function DropdownMenuCustom() {
                 {/* Menu da EMPRESA */}
                 {tipo === "Empresa" ? (
                     <>
-                        <DropdownItem key="cadastrar-vagas" onClick={() => navigate("vagascadastro")}>
+                        <DropdownItem key="cadastrar-vagas" onClick={() => navigate("/vagascadastro")}>
                             Cadastrar Vagas
                         </DropdownItem>
-                        <DropdownItem key="ver-vagas-empresa" onClick={() => navigate("vervagas")}>
+                        <DropdownItem key="ver-vagas-empresa" onClick={() => navigate("/vervagas")}>
                             Ver Vagas
                         </DropdownItem>
                     </>
                 ) : (
-                    <DropdownItem key="ver-vagas" onClick={() => navigate("vervagas")}>
+                    <DropdownItem key="ver-vagas" onClick={() => navigate("/vervagas")}>
                         Ver Vagas
                     </DropdownItem>
                 )}
